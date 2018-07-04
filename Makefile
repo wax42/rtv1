@@ -45,13 +45,13 @@ $(name) :
 	gcc -o $(name) $(lib) $(flag) $(X) $(comp) $(object) $(inc)
 
 clean :
-	rm $(object)
+	rm -f $(object)
 
 fclean : clean
-	rm $(name)
+	rm -f $(name)
 
 re : fclean all
 
 e :
-	rm $(name)
+	rm -f $(name)
 	make

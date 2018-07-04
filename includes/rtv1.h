@@ -21,7 +21,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <X.h>
-# include "mlx.h"
+# include "../minilibx_macos/mlx.h"
 # include <math.h>
 # include <stdlib.h>
 
