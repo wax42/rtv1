@@ -1,0 +1,24 @@
+{
+	"cam" : {
+		"pos" : [0.0, 0.0, -100.0],
+		"rot" : [0.0, 0.0, 0.0],
+		"global_illumination" : "off",
+		"filter" : "none",
+		"sample_ray" : 15,
+		"depth" : 0,
+		"fov" :  30.0
+	},
+
+	"light" : {
+		"color" : [250.0, 250.0, 250.0, 0.0],
+		"pos" : [130.0, -200.0, -200.0]
+	},
+
+	"sphere" : {
+		"pos" : [0.0, 0.0, 0.0],
+		"radius": 3.0,
+		"material" : "default",
+		"absorption" : 0.0,
+		"color" : [255.0, 22.0, 255.0, 0.0]
+	}
+}
