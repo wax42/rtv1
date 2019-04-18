@@ -1,41 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt.h                                               :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vguerand <vguerand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 17:09:19 by vguerand          #+#    #+#             */
-/*   Updated: 2018/12/27 16:10:24 by vguerand         ###   ########.fr       */
+/*   Created: 2017/11/18 14:34:44 by vguerand          #+#    #+#             */
+/*   Updated: 2017/12/11 14:20:04 by vguerand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_H
-# define RT_H
-# define WIN_W 980
-# define WIN_H 720
+#ifndef _GET_NEXT_LINE_H
+# define _GET_NEXT_LINE_H
 
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft.h"
 
+int					get_next_line(const int fd, char **line);
 
-
-typedef struct	s_rtv1
-{
-	int sucepute; // a suppr evidement
-}				t_rtv1;
-
-
-typedef struct	s_env
-{
-	void			*mlx;
-	void			*win;
-	void			*render;
-	char			*img;
-	t_rtv1			core;
-	unsigned char	aa;
-	char			on;
-}				t_env;
-
-int				init_env(t_env *e);
-void			ft_raytracer(t_env *e);
-void			projection(t_env *e);
 #endif

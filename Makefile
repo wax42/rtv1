@@ -21,26 +21,26 @@ PARSER_DIR	:=	parser
 MLX_DIR			:=	./mlx_macos
 INC_DIR			:=	./includes
 OBJ_DIR			:=	./objs
-LIB_DIR			:=	./libft
+LIB_DIR			:=	./libs
 
 #==============================================================================#
 #------------------------------------------------------------------------------#
 #                                  FILES                                       #
 
 SRC				:=	main.c					\
-							ft_raytracer.c			\
-							projection.c			\
-							obj_inter.c				\
-							obj_normal.c			\
-							phong.c					\
-							init.c					\
-							raytracing.c			\
-							ray_distorted.c			\
-							gi_ray_distorted.c		\
-							global_illumination.c	\
-							fresnel.c				\
-							get_all_inter.c			\
-							transparent.c			\
+							# ft_raytracer.c			\
+							# projection.c			\
+							# obj_inter.c				\
+							# obj_normal.c			\
+							# phong.c					\
+							# init.c					\
+							# raytracing.c			\
+							# ray_distorted.c			\
+							# gi_ray_distorted.c		\
+							# global_illumination.c	\
+							# fresnel.c				\
+							# get_all_inter.c			\
+							# transparent.c			\
 
 SRC_PARSER		:=			parser_json.c			\
 							json_key.c				\
@@ -57,7 +57,6 @@ SRC_PARSER		:=			parser_json.c			\
 OBJ_PARSER	:= $(addprefix $(OBJ_DIR)/,$(SRC_PARSER:.c=.o))
 
 OBJ					:= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
-OBJ					+= $(OBJ_PARSER)
 
 SRC_ALL			:= $(SRC_PARSER)
 SRC_ALL			+= $(SRC)
@@ -80,8 +79,8 @@ MLXFLAGS	:=		-framework OpenGL -framework AppKit
 #------------------------------------------------------------------------------#
 #                                LIBRARY                                       #
 
-LIBFT			:=			$(LIB_DIR)/libft.a
-CLIB			:=			-L$(LIB_DIR) -lft
+LIBFT			:=			$(LIB_DIR)/libft/libft.a
+CLIB			:=			-L$(LIB_DIR)/libft -lft
 LIB_MLX		:=			$(MLX_DIR)/libmlx.a
 L_FT			:=			$(LIB_DIR)
 
@@ -104,7 +103,7 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(INC_DIR)
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval TO_DO=$(shell echo "$@"))
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INC_DIR)
-	@vguerand "[ %d%% ] %s :: %s        \r" $(PERCENT) $(NAME) $@
+	@echo "[ %d%% ] %s :: %s        \r" $(PERCENT) $(NAME) $@
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/$(PARSER_DIR)/%.c $(INC_DIR)
@@ -112,7 +111,7 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/$(PARSER_DIR)/%.c $(INC_DIR)
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval TO_DO=$(shell echo "$@"))
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INC_DIR)
-	@vguerand "[ %d%% ] %s :: %s        \r" $(PERCENT) $(NAME) $@
+	@echo "[ %d%% ] %s :: %s        \r" $(PERCENT) $(NAME) $@
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 $(OBJ_DIR):
@@ -123,13 +122,13 @@ clean:
 	@rm -rf $(OBJ_DIR)
 	@$(MAKE) -C $(LIB_DIR) clean
 	@$(MAKE) -C $(MLX_DIR) clean
-	@vguerand '\033[33m[ KILL ] %s\n\033[0m' "Clean of $(NAME) is done ---"
+	@echo '\033[33m[ KILL ] %s\n\033[0m' "Clean of $(NAME) is done ---"
 
 fclean: clean
 	@rm -rf $(NAME)
 	@$(MAKE) -C $(LIB_DIR) fclean
 	@$(MAKE) -C $(MLX_DIR) fclean
-	@vguerand '\033[33m[ KILL ] %s\n\033[0m' "Fclean of $(NAME) is done ---"
+	@echo '\033[33m[ KILL ] %s\n\033[0m' "Fclean of $(NAME) is done ---"
 
 re:
 	@$(MAKE) fclean
