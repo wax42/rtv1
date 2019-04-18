@@ -14,7 +14,15 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "libft.h"
-#include "rt.h"
+#include "rtv1.h"
+
+int		ft_key(int k, void *info)
+{
+	(void)info;
+	if (k == 53)
+		exit(0);
+	return (0);
+}
 
 static void	check_arg(int argc, char **argv)
 {
@@ -39,11 +47,17 @@ static void	check_arg(int argc, char **argv)
 
 int			main(int argc, char **argv)
 {
-	t_env	e;
+	t_info	info;
 
 	check_arg(argc, argv);
+
+	if (!(info.mlx_t = mlx_init()))
+		return (0);
+	info.window = mlx_new_window(info.mlx_t, WIN_W, WIN_H, "rtv1");
+
+	mlx_key_hook(info.window, ft_key, &info);
+	mlx_loop(info.mlx_t);
 //	json_to_rtv1(all_json);
 	// ft_raytracer(&e);
-	(void)e;
 	return (0);
 }

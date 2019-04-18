@@ -1,3 +1,6 @@
 [submodule "libs"]
 	path = libs
 	url = https://github.com/wax42/libs
+[submodule "libmath"]
+	path = libmath
+	url = https://github.com/wax42/libmath.git
