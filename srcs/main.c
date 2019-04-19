@@ -16,6 +16,8 @@
 #include "libft.h"
 #include "rtv1.h"
 
+#include "stdio.h"
+
 int		ft_key(int k, void *info)
 {
 	(void)info;
@@ -33,8 +35,24 @@ static void	check_arg(int argc, char **argv)
 		ft_putstr_fd(" <file.json>\n", 2);
 		exit(EXIT_FAILURE);
 	}
+
 }
 
+
+t_obj	*init_rv1_obj()
+{
+	t_obj *obj;
+	t_vect vect;
+
+
+	if (!(obj = (t_obj*)malloc(sizeof(t_obj))))
+		return NULL;
+	vect = m_vec2_create(0.0, 0.0);
+	// obj->obj
+	printf("%f", vect[0]);
+	obj->type = 1; //plan
+	return obj;
+}
 
 // t_scene				*json_to_rtv1(char **files)
 // {
@@ -50,6 +68,9 @@ int			main(int argc, char **argv)
 	t_info	info;
 
 	check_arg(argc, argv);
+//	json_to_rtv1(all_json);
+	info.obj = init_rv1_obj();
+
 
 	if (!(info.mlx_t = mlx_init()))
 		return (0);
@@ -57,7 +78,6 @@ int			main(int argc, char **argv)
 
 	mlx_key_hook(info.window, ft_key, &info);
 	mlx_loop(info.mlx_t);
-//	json_to_rtv1(all_json);
 	// ft_raytracer(&e);
 	return (0);
 }

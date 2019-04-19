@@ -22,7 +22,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <X.h>
+// # include <X.h>
 # include "mlx.h"
 # include <math.h>
 # include <stdlib.h>

@@ -86,10 +86,9 @@ X = -I/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/X11/
 
 
 LIBFT			:=			$(LIB_DIR)/libft/libft.a
-LIBMATH			:=			$(LIB_DIR)/libmath/libmath.a
+LIBMATH			:=			$(LIB_DIR)/libmath/libmaths.a
 CLIB			:=			-L$(LIB_DIR)/libft -lft
 LIB_MLX			:=			$(MLX_DIR)/libmlx.a
-L_FT			:=			$(LIB_DIR)
 
 #==============================================================================#
 #------------------------------------------------------------------------------#
@@ -99,7 +98,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(LIBMATH) $(OBJ_DIR) $(OBJ)
 	@$(MAKE) -C $(MLX_DIR)
-	@$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(OBJ) $(CLIB) $(LIB_MLX)
+	@$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(OBJ) $(CLIB) $(LIB_MLX) $(LIBMATH)
 	@printf '\033[33m[ READY ] %s\n\033[0m' "Compilation of $(NAME) is done ---"
 
 $(LIBFT):
